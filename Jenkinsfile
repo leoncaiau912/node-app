@@ -13,7 +13,7 @@ pipeline {
     stage('Create Packer AMI') {
         steps {
           withCredentials([
-            usernamePassword(credentialsId: '63ab3233-f1a5-4465-9b5c-5ccea2e2face', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY')
+            usernamePassword(credentialsId: '20fb21ab-cf0a-4a0f-b6ea-02edf2daa386', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY')
           ]) {
             sh 'packer build -var aws_access_key=${AWS_KEY} -var aws_secret_key=${AWS_SECRET} packer/packer.json'
         }
@@ -22,7 +22,7 @@ pipeline {
     stage('AWS Deployment') {
       steps {
           withCredentials([
-            usernamePassword(credentialsId: '63ab3233-f1a5-4465-9b5c-5ccea2e2face', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY'),
+            usernamePassword(credentialsId: '20fb21ab-cf0a-4a0f-b6ea-02edf2daa386', passwordVariable: 'AWS_SECRET', usernameVariable: 'AWS_KEY'),
             usernamePassword(credentialsId: '2facaea2-613b-4f34-9fb7-1dc2daf25c45', passwordVariable: 'REPO_PASS', usernameVariable: 'REPO_USER'),
           ]) {
             sh 'rm -rf node-app-terraform'
