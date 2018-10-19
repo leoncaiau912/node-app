@@ -1,7 +1,7 @@
 pipeline {
   agent {
     docker {
-      image 'goforgold/build-container:latest'
+      image 'leoncaiau912/build-container:latest'
     }
   }
   stages {
